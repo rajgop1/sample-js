@@ -8,16 +8,21 @@
 <body>
     <script>
       // Initialize the array from localStorage or set it as an empty array
-      let dataArray = JSON.parse(localStorage.getItem("myArray")) || [];
-      
+      let dataArray = JSON.parse(localStorage.getItem("myArray"));
       /**
        * Adds an item to the array and updates localStorage.
        * @param {string} item - The item to be added.
        */
+      myarray = []
       function addItem(item) {
           // TODO: Implement adding item logic
+          myarray.push(item);
+          localStorage.clear();
+          JSON.stringify(localStorage.setItem("myArray", myarray))
+          console.log(JSON.parse(localStorage.getItem("myArray")))
       }
-      
+      localStorage.clear();
+      console.log(myarray)
       /**
        * Retrieves the stored array from localStorage.
        * @returns {Array} The stored array.
