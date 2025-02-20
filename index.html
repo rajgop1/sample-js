@@ -18,32 +18,41 @@
           // TODO: Implement adding item logic
           myarray.push(item);
           localStorage.clear();
-          JSON.stringify(localStorage.setItem("myArray", myarray))
-          console.log(JSON.parse(localStorage.getItem("myArray")))
+          localStorage.setItem("myArray", JSON.stringify(myarray))
       }
-      localStorage.clear();
-      console.log(myarray)
+      addItem("apoorva")
+      addItem("shakira")
+      addItem("selena")
+      addItem("kanika")
+      addItem("ravina")
       /**
        * Retrieves the stored array from localStorage.
        * @returns {Array} The stored array.
        */
       function getItems() {
           // TODO: Implement retrieval logic
+           return JSON.parse(localStorage.getItem("myArray"))
       }
-      
       /**
        * Removes an item at a given index and updates localStorage.
        * @param {number} index - The index of the item to remove.
        */
-      function removeItem(index) {
+      function removeItem(index , replaceBy) {
           // TODO: Implement item removal logic
-      }
+          myarray.splice(myarray.indexOf(index),1,replaceBy)
+          localStorage.clear();
+          localStorage.setItem("myArray", JSON.stringify(myarray))
+
+        }
+        removeItem("apoorva")
       
       /**
        * Clears all data from the array and removes it from localStorage.
        */
       function clearData() {
           // TODO: Implement clearing logic
+          myarray = []
+          localStorage.clear();
       }
       
       // Example usage (Remove comments when implementing)
@@ -55,6 +64,15 @@
       // clearData();
       // console.log("After Clearing Data:", getItems());
 
+      addItem("apoorva")
+      addItem("is a")
+      addItem("good")
+      addItem("girl")
+
+      removeItem("good","bad")
+      clearData()
+
+      
     </script>
 </body>
 </html>
