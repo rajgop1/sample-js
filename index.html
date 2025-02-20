@@ -8,40 +8,34 @@
 <body>
     <script>
       // Initialize the array from localStorage or set it as an empty array
-      let dataArray = JSON.parse(localStorage.getItem("myArray"))
+    //   ara = ["apoorva","anita","sakshi",5]
+    //   localStorage.setItem("myArray",JSON.stringify(ara))
+      let dataArray = JSON.parse(localStorage.getItem("myArray")) || []
       /**
        * Adds an item to the array and updates localStorage.
        * @param {string} item - The item to be added.
        */
       function addItem(item) {
           // TODO: Implement adding item logic
-          if(dataArray != null){
-            console.log(dataArray)
             dataArray.push(item)
-            localStorage.removeItem("myArray")
             localStorage.setItem("myArray",JSON.stringify(dataArray))
-          }
-          else{
-            let emptyCase = []
-            emptyCase.push(item)
-            localStorage.setItem("myArray",JSON.stringify(emptyCase))
-          }
       }
-      addItem("apoorva")
-      
       /**
        * Retrieves the stored array from localStorage.
        * @returns {Array} The stored array.
        */
       function getItems() {
-      }
-      /**
-       * Removes an item at a given index and updates localStorage.
-       * @param {number} index - The index of the item to remove.
-       */
-      function removeItem(index) {
-          // TODO: Implement item removal logic
-
+        console.log(dataArray)
+    }
+    /**
+     * Removes an item at a given index and updates localStorage.
+     * @param {number} index - The index of the item to remove.
+     */
+    function removeItem(item) {
+        // TODO: Implement item removal logic
+        dataArray.slice(item,1)
+        localStorage.setItem("myArray",JSON.stringify(dataArray))
+        
         }
       
       /**
@@ -49,8 +43,10 @@
        */
       function clearData() {
           // TODO: Implement clearing logic
+          localStorage.clear()
       }
-      
+      addItem("apoorva")
+      getItems()
       // Example usage (Remove comments when implementing)
       // console.log("Initial Data:", getItems());
       // addItem("Example Item");
@@ -60,7 +56,6 @@
       // clearData();
       // console.log("After Clearing Data:", getItems());
 
-      
     </script>
 </body>
 </html>
